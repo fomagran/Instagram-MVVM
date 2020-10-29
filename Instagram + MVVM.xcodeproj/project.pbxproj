@@ -21,6 +21,10 @@
 		04A7378D2547E56300773F7E /* WriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7378C2547E56300773F7E /* WriteController.swift */; };
 		04A737902547E56E00773F7E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7378F2547E56E00773F7E /* NotificationController.swift */; };
 		04A737932547E57800773F7E /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A737922547E57800773F7E /* MyPageController.swift */; };
+		04EDD83C254A688000E9EC69 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD83B254A688000E9EC69 /* CustomTextField.swift */; };
+		04EDD83F254A69DD00E9EC69 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD83E254A69DD00E9EC69 /* LoginController.swift */; };
+		04EDD842254A69E600E9EC69 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD841254A69E600E9EC69 /* SignUpController.swift */; };
+		04EDD845254A838000E9EC69 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD844254A838000E9EC69 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		04A7378C2547E56300773F7E /* WriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteController.swift; sourceTree = "<group>"; };
 		04A7378F2547E56E00773F7E /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		04A737922547E57800773F7E /* MyPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageController.swift; sourceTree = "<group>"; };
+		04EDD83B254A688000E9EC69 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		04EDD83E254A69DD00E9EC69 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		04EDD841254A69E600E9EC69 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		04EDD844254A838000E9EC69 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,8 @@
 				04A7378C2547E56300773F7E /* WriteController.swift */,
 				04A7378F2547E56E00773F7E /* NotificationController.swift */,
 				04A737922547E57800773F7E /* MyPageController.swift */,
+				04EDD83E254A69DD00E9EC69 /* LoginController.swift */,
+				04EDD841254A69E600E9EC69 /* SignUpController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -120,6 +130,7 @@
 		04A7377F2547E4A800773F7E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				04EDD844254A838000E9EC69 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -128,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				044CE60A25493B40005BE61D /* MainCell.swift */,
+				04EDD83B254A688000E9EC69 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,11 +224,15 @@
 				04A737932547E57800773F7E /* MyPageController.swift in Sources */,
 				04A7378D2547E56300773F7E /* WriteController.swift in Sources */,
 				04A7376C2547E49800773F7E /* ViewController.swift in Sources */,
+				04EDD83F254A69DD00E9EC69 /* LoginController.swift in Sources */,
 				04A737902547E56E00773F7E /* NotificationController.swift in Sources */,
 				044CE60B25493B40005BE61D /* MainCell.swift in Sources */,
 				04A7378A2547E55C00773F7E /* SearchController.swift in Sources */,
 				04A737842547E52D00773F7E /* TabBarController.swift in Sources */,
+				04EDD845254A838000E9EC69 /* LoginViewModel.swift in Sources */,
 				04A737682547E49800773F7E /* AppDelegate.swift in Sources */,
+				04EDD842254A69E600E9EC69 /* SignUpController.swift in Sources */,
+				04EDD83C254A688000E9EC69 /* CustomTextField.swift in Sources */,
 				04A7376A2547E49800773F7E /* SceneDelegate.swift in Sources */,
 				044CE60E25493C39005BE61D /* Extensions.swift in Sources */,
 				04A737872547E55200773F7E /* MainController.swift in Sources */,
