@@ -16,7 +16,10 @@ class SignUpController:UIViewController {
         updateUI()
     }
     
+    //MARK: 프로퍼티
+    
     private var viewModel = SignUpViewModel()
+    private var profileImage:UIImage?
     
     private let plusButton : UIButton = {
         //Button에 type을 붙여야 tintColor가 바뀜
@@ -52,6 +55,7 @@ class SignUpController:UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setHeight(50)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(tapSignUp), for: .touchUpInside)
         return button
     }()
     private let loginButton : UIButton = {
@@ -60,6 +64,26 @@ class SignUpController:UIViewController {
         button.addTarget(self, action: #selector(showLogin), for: .touchUpInside)
         return button
     }()
+    
+    
+    //MARK:액션
+    @objc func tapSignUp() {
+        guard let email = emailTextField.text else {return}
+        guard let password = emailTextField.text else {return}
+        guard let fullname = fullnameTextField.text else {return}
+        guard let username = usernameTextField.text?.lowercased() else {return}
+        guard let profileImage = self.profileImage else {return}
+        
+        let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
+        
+        AuthService.registerUser(withCredential: credentials) { (error) in
+            if let error = error  {
+                print("DEBUG: Failed to register user \(error.localizedDescription)")
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     @objc func showLogin(){
         navigationController?.popViewController(animated: true)
@@ -124,9 +148,12 @@ extension SignUpController : formUpdateProtocol {
     }
 }
 
+
+//MARK: 이미지 피커 딜리게이트
 extension SignUpController : UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        profileImage = selectedImage
         plusButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
         plusButton.layer.borderWidth = 2
         plusButton.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)

@@ -14,6 +14,7 @@ class LoginController:UIViewController {
         configureUI()
         configureNotificationObservers()
     }
+
     
     private var viewModel = LoginViewModel()
     
@@ -63,6 +64,8 @@ class LoginController:UIViewController {
         return button
     }()
     
+    //MARK: 액션
+    
     @objc func showSignUp(){
         navigationController?.pushViewController(SignUpController(), animated: true)
     }
@@ -76,7 +79,15 @@ class LoginController:UIViewController {
         updateUI()
     }
     @objc func tapLoginButton(){
-        print("??")
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        AuthService.logUserIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("DEBUG: Failed to log user in\(error.localizedDescription)")
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     func configureUI(){
         configureGradientLayer()

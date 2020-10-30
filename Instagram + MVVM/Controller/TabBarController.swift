@@ -6,12 +6,28 @@
 //
 
 import UIKit
+import Firebase
 
 class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = .black
         configrueControllers()
+        checkUserLoggedIn()
+    }
+    
+    
+    //MARK:checkUserLogin or Logout
+    
+    func checkUserLoggedIn(){
+        if Auth.auth().currentUser == nil {
+            //디스패치큐를 사용하는 이유는 탭바가 나오기전에 유저가 로그인하지 않았다면 LoginController가 실행되야하기 때문에
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        }
     }
     
     func configrueControllers() {
