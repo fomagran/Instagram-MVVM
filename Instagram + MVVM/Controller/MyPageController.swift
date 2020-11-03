@@ -8,28 +8,30 @@
 import UIKit
 
 class MyPageController: UICollectionViewController {
-    var user :User? {
-        didSet{
-            collectionView.reloadData()
-        }
+    
+    //MARK:Properties
+    
+    private var user : User
+    
+    //MARK:Life Cycle
+    
+    init(user:User) {
+        self.user = user
+        
+        //UICollectionViewLayout이라고 써서 약 30분 헤맸다... 잘보자...
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private let cellIdentifier = "MyPagePhotoCell"
     private let cellHeaderIdentifier = "MyPageHeaderCell"
     
-    
-    //MARK:라이픅사이클
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        fetchUser()
-    }
-    
-    //MARK: API
-    func fetchUser() {
-        UserService.fetchUser { (user) in
-            self.user = user
-            self.navigationItem.title = self.user?.username
-        }
     }
     
     //MARK: HELPERS
@@ -37,6 +39,7 @@ class MyPageController: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.register(MyPagePhotoCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.register(MyPageHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: cellHeaderIdentifier)
+        self.navigationItem.title = self.user.username
     }
 }
 
@@ -56,9 +59,8 @@ extension MyPageController {
     }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: cellHeaderIdentifier, for: indexPath) as! MyPageHeaderCell
-        if let user = user {
-            cell.viewModel = MyPageHeaderViewModel(user: user)
-        }
+        cell.viewModel = MyPageHeaderViewModel(user: user)
+
         return cell
     }
 }
@@ -74,13 +76,13 @@ extension MyPageController : UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = (view.frame.width - 2)/3
+        let width = (collectionView.frame.width - 2)/3
         let height = width
         
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 240)
+        return CGSize(width: collectionView.frame.width, height: 240)
     }
 }

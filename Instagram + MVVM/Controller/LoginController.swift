@@ -9,13 +9,16 @@ import UIKit
 
 class LoginController:UIViewController {
     
+    
+    //MARK:Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         configureNotificationObservers()
     }
 
-    
+    //MARK:Properties
+    weak var delegate:AuthentificationDelegate?
     private var viewModel = LoginViewModel()
     
     private let logoImageView : UIImageView = {
@@ -67,7 +70,9 @@ class LoginController:UIViewController {
     //MARK: 액션
     
     @objc func showSignUp(){
-        navigationController?.pushViewController(SignUpController(), animated: true)
+        let controller = SignUpController()
+        controller.delegate = delegate
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func textDidChange(sender:UITextField) {
@@ -83,10 +88,10 @@ class LoginController:UIViewController {
         guard let password = passwordTextField.text else {return}
         AuthService.logUserIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                print("DEBUG: Failed to log user in\(error.localizedDescription)")
+                print("DEBUG: Failed to log user in \(error.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.didLoginCompleted()
         }
     }
     func configureUI(){

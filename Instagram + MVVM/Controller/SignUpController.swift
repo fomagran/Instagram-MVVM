@@ -9,6 +9,7 @@ import UIKit
 
 class SignUpController:UIViewController {
     
+    //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -16,8 +17,9 @@ class SignUpController:UIViewController {
         updateUI()
     }
     
-    //MARK: 프로퍼티
+    //MARK: Properties
     
+    weak var delegate:AuthentificationDelegate?
     private var viewModel = SignUpViewModel()
     private var profileImage:UIImage?
     
@@ -69,7 +71,7 @@ class SignUpController:UIViewController {
     //MARK:액션
     @objc func tapSignUp() {
         guard let email = emailTextField.text else {return}
-        guard let password = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
         guard let fullname = fullnameTextField.text else {return}
         guard let username = usernameTextField.text?.lowercased() else {return}
         guard let profileImage = self.profileImage else {return}
@@ -81,7 +83,7 @@ class SignUpController:UIViewController {
                 print("DEBUG: Failed to register user \(error.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.didLoginCompleted()
         }
     }
     
