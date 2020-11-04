@@ -18,7 +18,9 @@
 		045DC797254BB8F1005AF9AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045DC796254BB8F1005AF9AB /* GoogleService-Info.plist */; };
 		045DC79F254BBB05005AF9AB /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DC79E254BBB05005AF9AB /* ImageUploader.swift */; };
 		045DC7A2254BBE9A005AF9AB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DC7A1254BBE9A005AF9AB /* AuthService.swift */; };
+		047308D32552628800C8BF95 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047308D22552628800C8BF95 /* SearchViewModel.swift */; };
 		0479A4E6255116C400A03D4D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4E5255116C400A03D4D /* Protocols.swift */; };
+		048246F12552541C00B0840D /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048246F02552541C00B0840D /* SearchCell.swift */; };
 		04A737682547E49800773F7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A737672547E49800773F7E /* AppDelegate.swift */; };
 		04A7376A2547E49800773F7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A737692547E49800773F7E /* SceneDelegate.swift */; };
 		04A7376C2547E49800773F7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7376B2547E49800773F7E /* ViewController.swift */; };
@@ -50,7 +52,9 @@
 		045DC796254BB8F1005AF9AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		045DC79E254BBB05005AF9AB /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		045DC7A1254BBE9A005AF9AB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		047308D22552628800C8BF95 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		0479A4E5255116C400A03D4D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		048246F02552541C00B0840D /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		04A737642547E49800773F7E /* Instagram + MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instagram + MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A737672547E49800773F7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04A737692547E49800773F7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 			children = (
 				04EDD844254A838000E9EC69 /* LoginViewModel.swift */,
 				041632FE254FC8CC00615D87 /* MyPageHeaderViewModel.swift */,
+				047308D22552628800C8BF95 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				04EDD83B254A688000E9EC69 /* CustomTextField.swift */,
 				041632EF254FA80A00615D87 /* MyPagePhotoCell.swift */,
 				041632F2254FA81500615D87 /* MyPageHeaderCell.swift */,
+				048246F02552541C00B0840D /* SearchCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -331,12 +337,14 @@
 				04A7378A2547E55C00773F7E /* SearchController.swift in Sources */,
 				04A737842547E52D00773F7E /* TabBarController.swift in Sources */,
 				041632FC254FC29400615D87 /* User.swift in Sources */,
+				048246F12552541C00B0840D /* SearchCell.swift in Sources */,
 				04EDD845254A838000E9EC69 /* LoginViewModel.swift in Sources */,
 				041632F9254FC1D700615D87 /* Constants.swift in Sources */,
 				04A737682547E49800773F7E /* AppDelegate.swift in Sources */,
 				041632FF254FC8CC00615D87 /* MyPageHeaderViewModel.swift in Sources */,
 				0479A4E6255116C400A03D4D /* Protocols.swift in Sources */,
 				04EDD842254A69E600E9EC69 /* SignUpController.swift in Sources */,
+				047308D32552628800C8BF95 /* SearchViewModel.swift in Sources */,
 				04EDD83C254A688000E9EC69 /* CustomTextField.swift in Sources */,
 				04A7376A2547E49800773F7E /* SceneDelegate.swift in Sources */,
 				045DC79F254BBB05005AF9AB /* ImageUploader.swift in Sources */,
