@@ -13,6 +13,8 @@ class MyPageHeaderCell:UICollectionReusableView {
     
     //MARK:Properties
     
+    weak var delegate: MyPageHeaderDelegate?
+    
     var viewModel:MyPageHeaderViewModel? {
         didSet {
             configure()
@@ -32,7 +34,7 @@ class MyPageHeaderCell:UICollectionReusableView {
         return label
     }()
     
-    private lazy var EditProfileButton:UIButton = {
+    private lazy var editProfileButton:UIButton = {
         let button = UIButton(type: .system)
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.lightGray.cgColor
@@ -49,7 +51,6 @@ class MyPageHeaderCell:UICollectionReusableView {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.attributedText = attributedStatText(value: 5, label: "posts")
         return label
     }()
     
@@ -57,7 +58,6 @@ class MyPageHeaderCell:UICollectionReusableView {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.attributedText = attributedStatText(value: 0, label: "followers")
         return label
     }()
     
@@ -65,7 +65,6 @@ class MyPageHeaderCell:UICollectionReusableView {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.attributedText = attributedStatText(value: 0, label: "following")
         return label
     }()
     
@@ -108,8 +107,8 @@ class MyPageHeaderCell:UICollectionReusableView {
         nameLabel.centerX(inView: profileImageView)
         nameLabel.anchor(top:profileImageView.bottomAnchor)
         
-        addSubview(EditProfileButton)
-        EditProfileButton.anchor(top:nameLabel.bottomAnchor,left: leftAnchor,right: rightAnchor,paddingTop: 16,paddingLeft: 24,paddingRight: 24)
+        addSubview(editProfileButton)
+        editProfileButton.anchor(top:nameLabel.bottomAnchor,left: leftAnchor,right: rightAnchor,paddingTop: 16,paddingLeft: 24,paddingRight: 24)
         
         let stack = UIStackView(arrangedSubviews: [postLabel,followerLabel,followingLabel])
         addSubview(stack)
@@ -140,19 +139,23 @@ class MyPageHeaderCell:UICollectionReusableView {
     
     //MARK:ACTIONS
     @objc func didTapEditProfileButton(){
-        print("DEBUG:did tap editprofilebutton...")
+        guard let viewModel = viewModel else {
+            return
+        }
+        delegate?.header(self, didTapActionButtonFor: viewModel.user)
+        
     }
     //MARK:HELPERS
     func configure() {
         guard let viewModel = viewModel else {return}
         nameLabel.text = viewModel.fullname
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        editProfileButton.setTitle(viewModel.followButtonText, for: .normal)
+        editProfileButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
+        editProfileButton.backgroundColor = viewModel.followButtonBackgroundColor
+        
+        postLabel.attributedText = viewModel.numberOfPosts
+        followerLabel.attributedText = viewModel.numberOfFollowers
+        followingLabel.attributedText = viewModel.numberOfFolling
     }
-    
-    func attributedStatText(value:Int,label:String) ->NSAttributedString {
-        let attributedText = NSMutableAttributedString(string: "\(value)\n",attributes: [.font:UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSMutableAttributedString(string: "\(label)",attributes: [.font:UIFont.systemFont(ofSize: 14),.foregroundColor:UIColor.lightGray]))
-        return attributedText
-    }
-    
 }

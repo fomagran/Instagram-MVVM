@@ -33,6 +33,7 @@
 		04A7378D2547E56300773F7E /* WriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7378C2547E56300773F7E /* WriteController.swift */; };
 		04A737902547E56E00773F7E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7378F2547E56E00773F7E /* NotificationController.swift */; };
 		04A737932547E57800773F7E /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A737922547E57800773F7E /* MyPageController.swift */; };
+		04CD0FA72557B7B50030FD17 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD0FA62557B7B50030FD17 /* UserStats.swift */; };
 		04EDD83C254A688000E9EC69 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD83B254A688000E9EC69 /* CustomTextField.swift */; };
 		04EDD83F254A69DD00E9EC69 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD83E254A69DD00E9EC69 /* LoginController.swift */; };
 		04EDD842254A69E600E9EC69 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD841254A69E600E9EC69 /* SignUpController.swift */; };
@@ -69,6 +70,7 @@
 		04A7378C2547E56300773F7E /* WriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteController.swift; sourceTree = "<group>"; };
 		04A7378F2547E56E00773F7E /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		04A737922547E57800773F7E /* MyPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageController.swift; sourceTree = "<group>"; };
+		04CD0FA62557B7B50030FD17 /* UserStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStats.swift; sourceTree = "<group>"; };
 		04EDD83B254A688000E9EC69 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		04EDD83E254A69DD00E9EC69 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		04EDD841254A69E600E9EC69 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				041632FB254FC29400615D87 /* User.swift */,
+				04CD0FA62557B7B50030FD17 /* UserStats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				04A7376C2547E49800773F7E /* ViewController.swift in Sources */,
 				041632F0254FA80A00615D87 /* MyPagePhotoCell.swift in Sources */,
 				04EDD83F254A69DD00E9EC69 /* LoginController.swift in Sources */,
+				04CD0FA72557B7B50030FD17 /* UserStats.swift in Sources */,
 				04A737902547E56E00773F7E /* NotificationController.swift in Sources */,
 				044CE60B25493B40005BE61D /* MainCell.swift in Sources */,
 				041632F3254FA81500615D87 /* MyPageHeaderCell.swift in Sources */,
