@@ -33,6 +33,8 @@
 		04A7378D2547E56300773F7E /* WriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7378C2547E56300773F7E /* WriteController.swift */; };
 		04A737902547E56E00773F7E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7378F2547E56E00773F7E /* NotificationController.swift */; };
 		04A737932547E57800773F7E /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A737922547E57800773F7E /* MyPageController.swift */; };
+		04A7A55A2558FA83004893D6 /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7A5592558FA83004893D6 /* UploadPostController.swift */; };
+		04A7A55D2559018D004893D6 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7A55C2559018D004893D6 /* InputTextView.swift */; };
 		04CD0FA72557B7B50030FD17 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD0FA62557B7B50030FD17 /* UserStats.swift */; };
 		04EDD83C254A688000E9EC69 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD83B254A688000E9EC69 /* CustomTextField.swift */; };
 		04EDD83F254A69DD00E9EC69 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD83E254A69DD00E9EC69 /* LoginController.swift */; };
@@ -70,6 +72,8 @@
 		04A7378C2547E56300773F7E /* WriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteController.swift; sourceTree = "<group>"; };
 		04A7378F2547E56E00773F7E /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		04A737922547E57800773F7E /* MyPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageController.swift; sourceTree = "<group>"; };
+		04A7A5592558FA83004893D6 /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
+		04A7A55C2559018D004893D6 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		04CD0FA62557B7B50030FD17 /* UserStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStats.swift; sourceTree = "<group>"; };
 		04EDD83B254A688000E9EC69 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		04EDD83E254A69DD00E9EC69 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				044CE60D25493C39005BE61D /* Extensions.swift */,
 				041632F8254FC1D700615D87 /* Constants.swift */,
 				0479A4E5255116C400A03D4D /* Protocols.swift */,
+				04A7A55C2559018D004893D6 /* InputTextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				04A737922547E57800773F7E /* MyPageController.swift */,
 				04EDD83E254A69DD00E9EC69 /* LoginController.swift */,
 				04EDD841254A69E600E9EC69 /* SignUpController.swift */,
+				04A7A5592558FA83004893D6 /* UploadPostController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A7A55A2558FA83004893D6 /* UploadPostController.swift in Sources */,
 				04A737932547E57800773F7E /* MyPageController.swift in Sources */,
 				04A7378D2547E56300773F7E /* WriteController.swift in Sources */,
 				04A7376C2547E49800773F7E /* ViewController.swift in Sources */,
@@ -351,6 +358,7 @@
 				047308D32552628800C8BF95 /* SearchViewModel.swift in Sources */,
 				04EDD83C254A688000E9EC69 /* CustomTextField.swift in Sources */,
 				04A7376A2547E49800773F7E /* SceneDelegate.swift in Sources */,
+				04A7A55D2559018D004893D6 /* InputTextView.swift in Sources */,
 				045DC79F254BBB05005AF9AB /* ImageUploader.swift in Sources */,
 				041632F6254FC18700615D87 /* UserService.swift in Sources */,
 				045DC7A2254BBE9A005AF9AB /* AuthService.swift in Sources */,

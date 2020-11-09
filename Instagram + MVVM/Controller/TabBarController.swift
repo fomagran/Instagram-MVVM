@@ -24,6 +24,7 @@ class TabBarController: UITabBarController {
         self.delegate = self
         checkUserLoggedIn()
         fetchUser()
+        
     }
     
     
@@ -75,7 +76,11 @@ class TabBarController: UITabBarController {
         picker.didFinishPicking { (items, _) in
             picker.dismiss(animated: true) {
                 guard let selectedImage = items.singlePhoto?.image else {return}
-    
+                let contorlloer = UploadPostController()
+                let nav = UINavigationController(rootViewController: contorlloer)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: false, completion: nil)
+                
             }
         }
     }
@@ -106,6 +111,8 @@ extension TabBarController:UITabBarControllerDelegate {
             let picker = YPImagePicker(configuration: config)
             picker.modalPresentationStyle = .fullScreen
             present(picker, animated: true, completion: nil)
+            
+            didFinishPickingMedia(picker)
             
         }
         return true
