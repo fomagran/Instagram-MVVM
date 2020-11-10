@@ -13,3 +13,7 @@ protocol AuthentificationDelegate:class {
 protocol MyPageHeaderDelegate:class {
     func header(_ profileHeader: MyPageHeaderCell, didTapActionButtonFor user:User)
 }
+
+protocol UploadPostControllerDelegate:class{
+    func controllerDidFinishUploadingPost(_ controller:UploadPostController)
+}
