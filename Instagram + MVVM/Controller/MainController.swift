@@ -13,6 +13,7 @@ private let reuseCellIdentifier = "Cell"
 class MainController: UICollectionViewController {
     
     //MARK: - Properties
+    var post : Post?
     private var posts = [Post]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class MainController: UICollectionViewController {
     //MARK: - Helpers
     
     func fetchPosts() {
+        guard post == nil else { return }
         PostService.fetchPosts { (posts) in
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
@@ -30,9 +32,12 @@ class MainController: UICollectionViewController {
         }
     }
     func configureUI(){
+        
         collectionView.backgroundColor = .white
         collectionView.register(MainCell.self, forCellWithReuseIdentifier: reuseCellIdentifier)
+        if post == nil {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title:"Logout",style: .plain,target: self,action: #selector(logout))
+        }
         navigationItem.title = "Feed"
         
         let refresher = UIRefreshControl()
@@ -64,12 +69,17 @@ class MainController: UICollectionViewController {
 //MARK: 콜렌션뷰 데이터소스
 extension MainController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        posts.count
+        return post != nil ? 1 :posts.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCellIdentifier, for: indexPath) as! MainCell
-        cell.viewModel = PostViewModel(post: posts[indexPath.row])
+
+            if let post = post {
+            cell.viewModel = PostViewModel(post: post)
+            } else{
+                cell.viewModel = PostViewModel(post: posts[indexPath.row])
+            }
         return cell
     }
     

@@ -10,6 +10,7 @@ import UIKit
 class MyPageController: UICollectionViewController {
     
     //MARK:Properties
+    private var posts = [Post]()
     private var user : User
 
     //MARK:Life Cycle
@@ -32,11 +33,19 @@ class MyPageController: UICollectionViewController {
         configureCollectionView()
         checkIfUserisFollowed()
         fetchUserStats()
+        fetchUserPosts()
     }
     //MARK: API
     func checkIfUserisFollowed() {
         UserService.checkIfUserFolloed(uid: user.uid) { (isFollowed) in
             self.user.isFollowed = isFollowed
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func fetchUserPosts() {
+        PostService.fetchUserPosts(forUser: user.uid) { (posts) in
+            self.posts = posts
             self.collectionView.reloadData()
         }
     }
@@ -59,16 +68,21 @@ class MyPageController: UICollectionViewController {
 
 //MARK: 콜렉션뷰 딜리게이트
 extension MyPageController {
-    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = MainController(collectionViewLayout: UICollectionViewFlowLayout())
+        controller.post = posts[indexPath.row]
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 //MARK: 콜렉션뷰 데이터소스
 extension MyPageController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        9
+        return posts.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! MyPagePhotoCell
+        cell.viewModel = PostViewModel(post: posts[indexPath.row])
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
