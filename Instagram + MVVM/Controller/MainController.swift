@@ -33,9 +33,17 @@ class MainController: UICollectionViewController {
         collectionView.register(MainCell.self, forCellWithReuseIdentifier: reuseCellIdentifier)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title:"Logout",style: .plain,target: self,action: #selector(logout))
         navigationItem.title = "Feed"
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(doRefresh), for: .touchUpInside)
+        collectionView.refreshControl = refresher
     }
     
+    
     //MARK: - Actions
+    @objc func doRefresh() {
+        
+    }
     @objc func logout(){
         do {
             try Auth.auth().signOut()

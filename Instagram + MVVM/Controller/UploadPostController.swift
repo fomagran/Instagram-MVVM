@@ -11,6 +11,8 @@ class UploadPostController: UIViewController {
     
     //MARK:Properties
     
+    var currentUser:User?
+    
     weak var delegate:UploadPostControllerDelegate?
     
     var selectedImage:UIImage? {
@@ -79,11 +81,13 @@ class UploadPostController: UIViewController {
     @objc func didTapCancel() {
         dismiss(animated: true, completion: nil)
     }
+    
     @objc func didTapShare() {
         guard let image = selectedImage else { return }
         guard let caption = captionTextView.text else { return }
+        guard let user = currentUser else { return }
         showLoader(true)
-        PostService.uploadPost(caption: caption, image: image) { (error) in
+        PostService.uploadPost(caption: caption, image: image,user: user ) { (error) in
             if let error = error {
                 print("DEBUG:Failed to upload post with error\(error.localizedDescription)")
             }
