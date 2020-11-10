@@ -11,6 +11,11 @@ class MainCell:UICollectionViewCell {
     
     
     //MARK: 프로퍼티
+    
+    var viewModel:PostViewModel? {
+        didSet { configure() }
+    }
+
     private let profileImageView : UIImageView = {
         
         let imageView = UIImageView()
@@ -122,8 +127,17 @@ class MainCell:UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Actions
     @objc func didTapUsername() {
         print("DEBUG : did tap username")
+    }
+    //MARK: Helpers
+    
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        captionLabel.text = viewModel.caption
+        postImageView.sd_setImage(with: viewModel.imageUrl)
+        likesLabel.text = "\(viewModel.likes) likes"
     }
     
     func configureActionButtons() {

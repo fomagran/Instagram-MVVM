@@ -8,13 +8,26 @@
 import UIKit
 import Firebase
 
+private let reuseCellIdentifier = "Cell"
+
 class MainController: UICollectionViewController {
-    private let reuseCellIdentifier = "Cell"
+    
+    //MARK: - Properties
+    private var posts = [Post]()
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchPosts()
     }
     
+    //MARK: - Helpers
+    
+    func fetchPosts() {
+        PostService.fetchPosts { (posts) in
+            self.posts = posts
+            self.collectionView.reloadData()
+        }
+    }
     func configureUI(){
         collectionView.backgroundColor = .white
         collectionView.register(MainCell.self, forCellWithReuseIdentifier: reuseCellIdentifier)
@@ -22,7 +35,7 @@ class MainController: UICollectionViewController {
         navigationItem.title = "Feed"
     }
     
-    //MARK:액션
+    //MARK: - Actions
     @objc func logout(){
         do {
             try Auth.auth().signOut()
@@ -41,12 +54,12 @@ class MainController: UICollectionViewController {
 //MARK: 콜렌션뷰 데이터소스
 extension MainController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        posts.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCellIdentifier, for: indexPath) as! MainCell
-       
+        cell.viewModel = PostViewModel(post: posts[indexPath.row])
         return cell
     }
     
