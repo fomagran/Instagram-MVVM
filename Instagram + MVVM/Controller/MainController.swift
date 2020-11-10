@@ -25,6 +25,7 @@ class MainController: UICollectionViewController {
     func fetchPosts() {
         PostService.fetchPosts { (posts) in
             self.posts = posts
+            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
     }
@@ -42,7 +43,8 @@ class MainController: UICollectionViewController {
     
     //MARK: - Actions
     @objc func doRefresh() {
-        
+        self.posts.removeAll()
+        fetchPosts()
     }
     @objc func logout(){
         do {

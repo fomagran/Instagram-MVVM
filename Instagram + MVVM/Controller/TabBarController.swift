@@ -127,5 +127,8 @@ extension TabBarController:UploadPostControllerDelegate {
     func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
         selectedIndex = 0
         controller.dismiss(animated: true, completion: nil)
+        guard let mainNav = viewControllers?.first as? UINavigationController else { return }
+        guard let main = mainNav.viewControllers.first as? MainController else { return }
+        main.doRefresh()
     }
 }
