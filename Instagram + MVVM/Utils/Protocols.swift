@@ -21,3 +21,7 @@ protocol UploadPostControllerDelegate:class{
 protocol MainCellDelegate:class {
     func cell(_ cell : MainCell,wantsToShowCommentFor post: Post)
 }
+
+protocol CommentInputAccesoryViewDelegate:class {
+    func inputView(_ inputView:CommentInputAccesoryView,wantsToUploadComment comment:String)
+}

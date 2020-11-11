@@ -11,6 +11,8 @@ class CommentInputAccesoryView:UIView {
     
     //MARK:PROPERTIES
     
+    weak var delegate:CommentInputAccesoryViewDelegate?
+    
     private let commentTextView:InputTextView = {
         let textView = InputTextView()
         textView.placeholderText = "Enter comment..."
@@ -33,6 +35,8 @@ class CommentInputAccesoryView:UIView {
     //MARK:LIFECYCLE
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        backgroundColor = .white
         
         //미해결 - 대충은 슈퍼뷰가 바뀌었을 때 자동으로 바뀐다.
         autoresizingMask = .flexibleHeight
@@ -62,6 +66,12 @@ class CommentInputAccesoryView:UIView {
     
     //MARK: ACTIONS
     @objc func tapPostBtn() {
-        
+        self.delegate?.inputView(self, wantsToUploadComment: commentTextView.text)
+    }
+    
+    //MARK: Helpers
+    func clearCommentTextView(){
+        commentTextView.text = nil
+        commentTextView.placeholderLabel.isHidden = false
     }
 }

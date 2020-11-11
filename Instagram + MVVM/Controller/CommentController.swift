@@ -16,6 +16,7 @@ class CommentController: UICollectionViewController {
     private lazy var commentInputView:CommentInputAccesoryView =  {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let view = CommentInputAccesoryView(frame: frame)
+        view.delegate = self
         return view
     }()
     
@@ -87,4 +88,15 @@ extension CommentController:UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: 100)
     }
+}
+
+
+//MARK: CommentInputAccesoryViewDelegate
+extension CommentController:CommentInputAccesoryViewDelegate {
+    
+    func inputView(_ inputView: CommentInputAccesoryView, wantsToUploadComment comment: String) {
+        inputView.clearCommentTextView()
+    }
+    
+    
 }
