@@ -12,6 +12,8 @@ class MainCell:UICollectionViewCell {
     
     //MARK: 프로퍼티
     
+    weak var delegate:MainCellDelegate?
+    
     var viewModel:PostViewModel? {
         didSet { configure() }
     }
@@ -56,7 +58,7 @@ class MainCell:UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "comment"), for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapCommentBtn), for: .touchUpInside)
         return button
     }()
     
@@ -123,6 +125,11 @@ class MainCell:UICollectionViewCell {
     }
     
     //MARK: Actions
+    
+    @objc func didTapCommentBtn() {
+        guard let viewModel = viewModel else { return }
+        self.delegate?.cell(self,wantsToShowCommentFor: viewModel.post)
+    }
     @objc func didTapUsername() {
         print("DEBUG : did tap username")
     }

@@ -74,7 +74,7 @@ extension MainController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCellIdentifier, for: indexPath) as! MainCell
-
+            cell.delegate = self
             if let post = post {
             cell.viewModel = PostViewModel(post: post)
             } else{
@@ -96,4 +96,12 @@ extension MainController:UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: height)
     }
     
+}
+
+
+extension MainController:MainCellDelegate {
+    func cell(_ cell: MainCell, wantsToShowCommentFor post: Post) {
+        let controlloer = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(controlloer, animated: true)
+    }
 }

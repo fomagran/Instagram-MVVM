@@ -8,6 +8,7 @@
 import Firebase
 
 struct Post {
+    
     var caption:String
     var likes:Int
     let imageUrl:String

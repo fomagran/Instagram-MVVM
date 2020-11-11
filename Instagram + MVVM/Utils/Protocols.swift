@@ -17,3 +17,7 @@ protocol MyPageHeaderDelegate:class {
 protocol UploadPostControllerDelegate:class{
     func controllerDidFinishUploadingPost(_ controller:UploadPostController)
 }
+
+protocol MainCellDelegate:class {
+    func cell(_ cell : MainCell,wantsToShowCommentFor post: Post)
+}
