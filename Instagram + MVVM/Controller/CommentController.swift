@@ -10,7 +10,17 @@ import UIKit
 private let reuseIdentifier = "CommentCell"
 
 class CommentController: UICollectionViewController {
-
+    
+    //MARK:Propeties
+    
+    private lazy var commentInputView:CommentInputAccesoryView =  {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let view = CommentInputAccesoryView(frame: frame)
+        return view
+    }()
+    
+    
+    //MARK:LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +28,27 @@ class CommentController: UICollectionViewController {
       
     }
     
-    //MAKR: Helpers
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    //미해결
+    override var inputAccessoryView: UIView? {
+        get { return commentInputView }
+    }
+    
+    //미해결
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    //MARK: Helpers
     
     func configure() {
         self.collectionView.backgroundColor = .white
@@ -41,8 +71,6 @@ extension CommentController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        cell.backgroundColor = .black
-    
         return cell
     }
 }
@@ -51,12 +79,12 @@ extension CommentController {
 
 extension CommentController:UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        10
+        0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        10
+        0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: collectionView.frame.size.width, height: 100)
     }
 }

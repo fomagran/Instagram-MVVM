@@ -11,6 +11,17 @@ class InputTextView: UITextView {
 
    //MARK: Properties
     
+    var placeholderShouldCenter = true {
+        didSet {
+            if placeholderShouldCenter {
+                placeholderLabel.anchor(left:leftAnchor,right: rightAnchor,paddingLeft: 8)
+                placeholderLabel.centerY(inView: self)
+            }else{
+                placeholderLabel.anchor(left:leftAnchor,right: rightAnchor,paddingTop: 6,paddingLeft: 8)
+            }
+        }
+    }
+    
     var placeholderText :String? {
         didSet { placeholderLabel.text = placeholderText}
     }
