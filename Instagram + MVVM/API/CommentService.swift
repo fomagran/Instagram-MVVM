@@ -17,6 +17,7 @@ struct CommentService {
         var comments = [Comment]()
         let query = COLLECTION_POSTS.document(postId).collection("comments").order(by: "timestamp",descending: true)
         query.addSnapshotListener { (snapshot, error) in
+            //new
             snapshot?.documentChanges.forEach({ (change) in
                 if change.type == .added {
                     let data = change.document.data()

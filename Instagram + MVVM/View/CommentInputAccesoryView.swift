@@ -38,7 +38,7 @@ class CommentInputAccesoryView:UIView {
         
         backgroundColor = .white
         
-        //미해결 - 대충은 슈퍼뷰가 바뀌었을 때 자동으로 바뀐다.
+        //new
         autoresizingMask = .flexibleHeight
         
         addSubview(postButton)
@@ -58,7 +58,7 @@ class CommentInputAccesoryView:UIView {
         fatalError()
     }
     
-    //미해결
+    //new
     override var intrinsicContentSize: CGSize {
         return .zero
     }

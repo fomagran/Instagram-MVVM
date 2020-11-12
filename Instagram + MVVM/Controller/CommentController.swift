@@ -52,12 +52,12 @@ class CommentController: UICollectionViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    //미해결
+    //new
     override var inputAccessoryView: UIView? {
         get { return commentInputView }
     }
     
-    //미해결
+    //new
     override var canBecomeFirstResponder: Bool {
         return true
     }
@@ -75,6 +75,9 @@ class CommentController: UICollectionViewController {
     func configure() {
         self.collectionView.backgroundColor = .white
         self.collectionView!.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //키보드 사라지게하기
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
 
     }
 
@@ -91,8 +94,8 @@ extension CommentController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CommentCell
+        cell.viewModel = CommentViewModel(comment: comments[indexPath.row])
         return cell
     }
 }
@@ -100,14 +103,11 @@ extension CommentController {
 //MARK: UICollectionViewDelegateFlowLayout
 
 extension CommentController:UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        0
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        0
-    }
+ 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width, height: 100)
+        let viewModel = CommentViewModel(comment: comments[indexPath.row])
+        let height = viewModel.size(width: view.frame.width).height + 16
+        return CGSize(width: view.frame.size.width, height: height)
     }
 }
 
