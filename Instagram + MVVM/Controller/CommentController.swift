@@ -12,6 +12,7 @@ private let reuseIdentifier = "CommentCell"
 class CommentController: UICollectionViewController {
     
     //MARK:Propeties
+    private var comments = [Comment]()
     
     private let post:Post
     
@@ -37,6 +38,7 @@ class CommentController: UICollectionViewController {
         super.viewDidLoad()
 
        configure()
+        fetchComments()
       
     }
     
@@ -60,6 +62,14 @@ class CommentController: UICollectionViewController {
         return true
     }
     
+    //MARK:API
+    func fetchComments() {
+        CommentService.fetchComment(postId: post.postId) { (comments) in
+            self.comments = comments
+            self.collectionView.reloadData()
+        }
+    }
+    
     //MARK: Helpers
     
     func configure() {
@@ -77,7 +87,7 @@ extension CommentController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return comments.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
