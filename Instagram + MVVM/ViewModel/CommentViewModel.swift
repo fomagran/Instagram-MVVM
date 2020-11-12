@@ -25,6 +25,8 @@ struct CommentViewModel {
         self.comment = comment
     }
     
+    
+    //커멘트 헤이트 길이 조정
     func size(width:CGFloat) -> CGSize {
         let label = UILabel()
         label.numberOfLines = 0

@@ -84,6 +84,15 @@ class CommentController: UICollectionViewController {
 }
 
 // MARK: UICollectionViewDelegate
+extension CommentController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let uid = comments[indexPath.row].uid
+        UserService.fetchUser(uid: uid) { (user) in
+            let controller = MyPageController(user:user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+}
 
 // MARK: UICollectionViewDataSource
 extension CommentController {
