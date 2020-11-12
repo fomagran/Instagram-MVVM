@@ -101,7 +101,7 @@ extension MainController:UICollectionViewDelegateFlowLayout {
 
 extension MainController:MainCellDelegate {
     func cell(_ cell: MainCell, wantsToShowCommentFor post: Post) {
-        let controlloer = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
+        let controlloer = CommentController(post: post)
         navigationController?.pushViewController(controlloer, animated: true)
     }
 }

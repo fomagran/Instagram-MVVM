@@ -11,7 +11,7 @@ import YPImagePicker
 
 class TabBarController: UITabBarController {
     
-    private var user:User? {
+    var user:User? {
         didSet {
             guard let user = user else {return}
             configrueControllers(user: user)
