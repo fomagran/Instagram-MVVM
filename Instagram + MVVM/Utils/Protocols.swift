@@ -21,6 +21,7 @@ protocol UploadPostControllerDelegate:class{
 protocol MainCellDelegate:class {
     func cell(_ cell : MainCell,wantsToShowCommentFor post: Post)
     func cell(_ cell : MainCell,didLike post:Post)
+    func cell(_ cell:MainCell,wantsToShowProfile uid :String)
 }
 
 protocol CommentInputAccesoryViewDelegate:class {

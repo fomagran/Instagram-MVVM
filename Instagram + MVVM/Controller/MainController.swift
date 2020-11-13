@@ -112,6 +112,13 @@ extension MainController:UICollectionViewDelegateFlowLayout {
 
 
 extension MainController:MainCellDelegate {
+    func cell(_ cell: MainCell, wantsToShowProfile uid: String) {
+        UserService.fetchUser(uid: uid) { (user) in
+            let controller = MyPageController(user: user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
     func cell(_ cell: MainCell, wantsToShowCommentFor post: Post) {
         let controlloer = CommentController(post: post)
         navigationController?.pushViewController(controlloer, animated: true)

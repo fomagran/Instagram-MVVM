@@ -19,13 +19,16 @@ class MainCell:UICollectionViewCell {
         didSet { configure() }
     }
 
-    private let profileImageView : UIImageView = {
+    private lazy var profileImageView : UIImageView = {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
         imageView.backgroundColor = .lightGray
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showUserProfile))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tap)
         return imageView
     }()
     
@@ -33,17 +36,17 @@ class MainCell:UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showUserProfile), for: .touchUpInside)
         
         return button
     }()
     
     private let postImageView : UIImageView = {
-        
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
+        
         return imageView
     }()
     
@@ -65,7 +68,7 @@ class MainCell:UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "send2"), for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showUserProfile), for: .touchUpInside)
         return button
     }()
     
@@ -129,8 +132,9 @@ class MainCell:UICollectionViewCell {
         guard let viewModel = viewModel else { return }
         self.delegate?.cell(self,wantsToShowCommentFor: viewModel.post)
     }
-    @objc func didTapUsername() {
-        print("DEBUG : did tap username")
+    @objc func showUserProfile() {
+        guard let viewModel = viewModel else { return  }
+        self.delegate?.cell(self, wantsToShowProfile: viewModel.post.ownerUid)
     }
     
     @objc func didTapLikeBtn(){
