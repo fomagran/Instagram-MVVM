@@ -7,8 +7,9 @@
 
 import UIKit
 
+
+
 class MainCell:UICollectionViewCell {
-    
     
     //MARK: 프로퍼티
     
@@ -46,11 +47,11 @@ class MainCell:UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var likeButton:UIButton = {
+     lazy var likeButton:UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapLikeBtn), for: .touchUpInside)
         return button
     }()
     
@@ -132,6 +133,11 @@ class MainCell:UICollectionViewCell {
     }
     @objc func didTapUsername() {
         print("DEBUG : did tap username")
+    }
+    
+    @objc func didTapLikeBtn(){
+        guard let viewModel = viewModel else {return}
+        delegate?.cell(self, didLike: viewModel.post)
     }
     //MARK: Helpers
     

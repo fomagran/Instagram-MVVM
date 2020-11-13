@@ -104,4 +104,16 @@ extension MainController:MainCellDelegate {
         let controlloer = CommentController(post: post)
         navigationController?.pushViewController(controlloer, animated: true)
     }
+    func cell(_ cell: MainCell, didLike post: Post) {
+        //new
+        cell.viewModel?.post.didLike.toggle()
+        if post.didLike {
+            
+        }else{
+        PostService.likePost(post: post) { (error) in
+            cell.likeButton.setImage(#imageLiteral(resourceName: "like_selected"), for: .normal)
+            cell.likeButton.tintColor = .red
+        }
+        }
+    }
 }

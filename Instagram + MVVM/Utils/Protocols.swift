@@ -20,6 +20,7 @@ protocol UploadPostControllerDelegate:class{
 
 protocol MainCellDelegate:class {
     func cell(_ cell : MainCell,wantsToShowCommentFor post: Post)
+    func cell(_ cell : MainCell,didLike post:Post)
 }
 
 protocol CommentInputAccesoryViewDelegate:class {
