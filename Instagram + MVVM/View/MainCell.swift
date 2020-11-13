@@ -49,8 +49,6 @@ class MainCell:UICollectionViewCell {
     
      lazy var likeButton:UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
-        button.tintColor = .black
         button.addTarget(self, action: #selector(didTapLikeBtn), for: .touchUpInside)
         return button
     }()
@@ -71,7 +69,7 @@ class MainCell:UICollectionViewCell {
         return button
     }()
     
-    private let likesLabel : UILabel = {
+    private lazy var likesLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 13)
         return label
@@ -147,8 +145,10 @@ class MainCell:UICollectionViewCell {
         postImageView.sd_setImage(with: viewModel.imageUrl)
         profileImageView.sd_setImage(with: viewModel.userProfileImageUrl)
         usernameButton.setTitle(viewModel.username, for: .normal)
-        
         likesLabel.text = viewModel.likesLabelText
+        likeButton.tintColor = viewModel.likeButtonTintColor
+        likeButton.setImage(viewModel.likeButtonImage, for: .normal)
+        
     }
     
     func configureActionButtons() {

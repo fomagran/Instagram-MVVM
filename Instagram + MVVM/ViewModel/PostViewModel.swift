@@ -28,6 +28,14 @@ struct PostViewModel {
         }
     }
     
+    var likeButtonTintColor:UIColor {
+        return post.didLike ? .red:.black
+    }
+    
+    var likeButtonImage:UIImage? {
+        return post.didLike ?  #imageLiteral(resourceName: "like_selected") :  #imageLiteral(resourceName: "like_unselected")
+    }
+    
     init(post:Post) {
         self.post = post
     }
