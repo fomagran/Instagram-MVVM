@@ -45,6 +45,8 @@
 		04CD3287255A409100032782 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD3286255A409100032782 /* PostService.swift */; };
 		04CD328A255A4C3300032782 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD3289255A4C3300032782 /* Post.swift */; };
 		04CD328D255A4ED600032782 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD328C255A4ED600032782 /* PostViewModel.swift */; };
+		04D85C6E256231EC00D104A5 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D85C6D256231EC00D104A5 /* NotificationCell.swift */; };
+		04D85C712562380F00D104A5 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D85C702562380F00D104A5 /* Notification.swift */; };
 		04EDD83C254A688000E9EC69 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD83B254A688000E9EC69 /* CustomTextField.swift */; };
 		04EDD83F254A69DD00E9EC69 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD83E254A69DD00E9EC69 /* LoginController.swift */; };
 		04EDD842254A69E600E9EC69 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDD841254A69E600E9EC69 /* SignUpController.swift */; };
@@ -93,6 +95,8 @@
 		04CD3286255A409100032782 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		04CD3289255A4C3300032782 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		04CD328C255A4ED600032782 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		04D85C6D256231EC00D104A5 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		04D85C702562380F00D104A5 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		04EDD83B254A688000E9EC69 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		04EDD83E254A69DD00E9EC69 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		04EDD841254A69E600E9EC69 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				048246F02552541C00B0840D /* SearchCell.swift */,
 				045ABC66255B90A1007A558A /* CommentCell.swift */,
 				045ABC69255B9AE4007A558A /* CommentInputAccesoryView.swift */,
+				04D85C6D256231EC00D104A5 /* NotificationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				04CD0FA62557B7B50030FD17 /* UserStats.swift */,
 				04CD3289255A4C3300032782 /* Post.swift */,
 				04607CF5255CE1EC00894014 /* Comment.swift */,
+				04D85C702562380F00D104A5 /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 				04A7A55A2558FA83004893D6 /* UploadPostController.swift in Sources */,
 				04A737932547E57800773F7E /* MyPageController.swift in Sources */,
 				04A7378D2547E56300773F7E /* WriteController.swift in Sources */,
+				04D85C6E256231EC00D104A5 /* NotificationCell.swift in Sources */,
 				04A7376C2547E49800773F7E /* ViewController.swift in Sources */,
 				041632F0254FA80A00615D87 /* MyPagePhotoCell.swift in Sources */,
 				04EDD83F254A69DD00E9EC69 /* LoginController.swift in Sources */,
@@ -397,6 +404,7 @@
 				04CD3287255A409100032782 /* PostService.swift in Sources */,
 				04607CF3255CDE6A00894014 /* CommentService.swift in Sources */,
 				041632F6254FC18700615D87 /* UserService.swift in Sources */,
+				04D85C712562380F00D104A5 /* Notification.swift in Sources */,
 				045DC7A2254BBE9A005AF9AB /* AuthService.swift in Sources */,
 				044CE60E25493C39005BE61D /* Extensions.swift in Sources */,
 				04A737872547E55200773F7E /* MainController.swift in Sources */,
