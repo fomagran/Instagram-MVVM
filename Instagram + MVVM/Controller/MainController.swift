@@ -124,6 +124,10 @@ extension MainController:MainCellDelegate {
         navigationController?.pushViewController(controlloer, animated: true)
     }
     func cell(_ cell: MainCell, didLike post: Post) {
+        
+        guard let tab = self.tabBarController as? TabBarController else { return  }
+        guard let user = tab.user else { return  }
+        
         //new
         cell.viewModel?.post.didLike.toggle()
         if post.didLike {
@@ -139,7 +143,7 @@ extension MainController:MainCellDelegate {
             cell.viewModel?.post.likes = post.likes + 1
             
         }
-            NotificationService.uploadNotification(toUid: post.ownerUid, type: .like,post: post)
+            NotificationService.uploadNotification(toUid: post.ownerUid, type: .like,post: post,fromUser: user)
         }
     }
 }

@@ -8,10 +8,15 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 class NotificationController: UITableViewController {
+    
+   private  var notifications = [Notification]() {
+        didSet { tableView.reloadData()}
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        
+        fetchNotifications()
     }
     
     //MARK: Helper
@@ -23,15 +28,22 @@ class NotificationController: UITableViewController {
         tableView.rowHeight = 80
         tableView.separatorStyle = .none
     }
+    
+    func fetchNotifications(){
+        NotificationService.fetchNotifications { (notifications) in
+            self.notifications = notifications
+        }
+    }
 }
 
 extension NotificationController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return notifications.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! NotificationCell
+        cell.viewModel = NotificationViewModel(notification: notifications[indexPath.row])
         return cell
     }
 }
