@@ -10,6 +10,7 @@ import UIKit
 class NotificationCell:UITableViewCell {
     
     //MARK:Properties
+    weak var delegate:NotificationCellDelegate?
     
     var viewModel:NotificationViewModel?{
         didSet { configure() }
@@ -30,7 +31,7 @@ class NotificationCell:UITableViewCell {
         return label
     }()
     
-    private let postImageView:UIImageView = {
+    private lazy var postImageView:UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
@@ -43,7 +44,7 @@ class NotificationCell:UITableViewCell {
         return imageView
     }()
     
-    private let followButton:UIButton =  {
+    private lazy var followButton:UIButton =  {
         let button = UIButton(type: .system)
         button.setTitle("Loding", for: .normal)
         button.layer.cornerRadius = 3
@@ -66,13 +67,14 @@ class NotificationCell:UITableViewCell {
         profieImageView.anchor(left:leftAnchor,paddingLeft: 16)
         profieImageView.setDimensions(height: 48, width: 48)
         profieImageView.layer.cornerRadius = 24
-        
-        addSubview(infoLabel)
-        infoLabel.centerY(inView: profieImageView,leftAnchor: profieImageView.rightAnchor,paddingLeft: 8)
-        
+     
         addSubview(followButton)
         followButton.centerY(inView: self)
         followButton.anchor(right:rightAnchor,paddingRight: 12,width: 88,height: 32)
+        
+        addSubview(infoLabel)
+        infoLabel.centerY(inView: profieImageView,leftAnchor: profieImageView.rightAnchor,paddingLeft: 8)
+        infoLabel.anchor(right:followButton.leftAnchor,paddingLeft: 4)
         
         addSubview(postImageView)
         postImageView.centerY(inView: self)
@@ -93,6 +95,13 @@ class NotificationCell:UITableViewCell {
         profieImageView.sd_setImage(with: viewModel.profileImageUrl)
         postImageView.sd_setImage(with: viewModel.postImageUrl)
         infoLabel.attributedText = viewModel.notificationMessage
+        
+        followButton.isHidden = !viewModel.shouldHidePostImage
+        postImageView.isHidden = viewModel.shouldHidePostImage
+        
+        followButton.setTitle(viewModel.followButtonText, for: .normal)
+        followButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
+        followButton.backgroundColor = viewModel.followButtonBackgroundColor
     }
     
     //MARK: Actions
@@ -102,7 +111,8 @@ class NotificationCell:UITableViewCell {
     }
     
     @objc func tapPostImage(){
-        
+        guard let postId = viewModel?.notification.postId else { return  }
+        delegate?.cell(self, wantsToViewPost: postId)
     }
     
     

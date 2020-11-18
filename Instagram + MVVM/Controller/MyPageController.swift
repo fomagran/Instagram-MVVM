@@ -120,6 +120,10 @@ extension MyPageController : UICollectionViewDelegateFlowLayout {
 //MARK: MyPageHeaderDelegate
 extension MyPageController : MyPageHeaderDelegate {
     func header(_ profileHeader: MyPageHeaderCell, didTapActionButtonFor user: User) {
+        
+        guard let tab = self.tabBarController as? TabBarController else { return  }
+        guard let currentUser = tab.user else { return  }
+        
         if user.isCurrentUser {
             
         }else if user.isFollowed {
@@ -131,6 +135,8 @@ extension MyPageController : MyPageHeaderDelegate {
             UserService.follow(uid: user.uid) { (error) in
                 self.user.isFollowed = true
                 self.collectionView.reloadData()
+                
+                NotificationService.uploadNotification(toUid: user.uid, type: .follow, fromUser: currentUser)
             }
         }
     }

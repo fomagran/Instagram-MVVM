@@ -5,7 +5,6 @@
 //  Created by Fomagran on 2020/11/03.
 //
 
-
 protocol AuthentificationDelegate:class {
     func didLoginCompleted()
 }
@@ -26,4 +25,10 @@ protocol MainCellDelegate:class {
 
 protocol CommentInputAccesoryViewDelegate:class {
     func inputView(_ inputView:CommentInputAccesoryView,wantsToUploadComment comment:String)
+}
+
+protocol NotificationCellDelegate:class {
+    func cell(_ cell: NotificationCell, wantsToFollow uid:String)
+    func cell(_ cell: NotificationCell, wantsToUnfollow uid:String)
+    func cell(_ cell: NotificationCell, wantsToViewPost postId:String)
 }
