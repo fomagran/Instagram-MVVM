@@ -27,10 +27,10 @@ class MainController: UICollectionViewController {
     
     func fetchPosts() {
         guard post == nil else { return }
-        PostService.fetchPosts { (posts) in
+        PostService.fetchFollwerPosts { (posts) in
             self.posts = posts
-            self.collectionView.refreshControl?.endRefreshing()
             self.checkIfUserLikedPosts()
+            self.collectionView.reloadData()
         }
     }
     

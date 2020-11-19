@@ -137,6 +137,8 @@ extension MyPageController : MyPageHeaderDelegate {
                 self.collectionView.reloadData()
                 
                 NotificationService.uploadNotification(toUid: user.uid, type: .follow, fromUser: currentUser)
+                
+                PostService.updateUserFeedFolloing(user: user)
             }
         }
     }
