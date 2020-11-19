@@ -9,7 +9,7 @@ import UIKit
 
 struct NotificationViewModel {
     
-     let notification:Notification
+     var notification:Notification
     
     init(notification:Notification) {
         self.notification = notification
@@ -37,6 +37,7 @@ struct NotificationViewModel {
     var followButtonText:String { return notification.isUserFollowed ? "Following":"Follow"}
     
     var followButtonBackgroundColor:UIColor {return notification.isUserFollowed ?.white :.systemBlue }
+    
     var followButtonTextColor:UIColor { return notification.isUserFollowed ?  .black :. white }
     
     

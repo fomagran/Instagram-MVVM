@@ -17,7 +17,7 @@ class NotificationController: UITableViewController {
         super.viewDidLoad()
         configure()
         fetchNotifications()
-        checkIfUserFolloed()
+    
     }
     
     //MARK: Helper
@@ -33,10 +33,11 @@ class NotificationController: UITableViewController {
     func fetchNotifications(){
         NotificationService.fetchNotifications { (notifications) in
             self.notifications = notifications
+            self.checkIfUserFollowed()
         }
     }
     
-    func checkIfUserFolloed() {
+    func checkIfUserFollowed() {
         notifications.forEach { (notification) in
             guard notification.type == .follow else {return}
             
@@ -62,20 +63,38 @@ extension NotificationController {
         return cell
     }
 }
+//MARK: UITableViewDelegate
+extension NotificationController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UserService.fetchUser(uid: notifications[indexPath.row].uid) { (user) in
+            let controller = MyPageController(user:user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+}
 
 //MARK:NotificationCellDelegate
 
 extension NotificationController:NotificationCellDelegate {
     func cell(_ cell: NotificationCell, wantsToFollow uid: String) {
-        print("DEBUG:follow")
+        UserService.follow(uid: uid) { (_) in
+            cell.viewModel?.notification.isUserFollowed.toggle()
+        }
+       
     }
     
     func cell(_ cell: NotificationCell, wantsToUnfollow uid: String) {
-        print("DEBUG:unfollow")
+        UserService.unfollow(uid: uid) { (_) in
+            cell.viewModel?.notification.isUserFollowed.toggle()
+        }
     }
     
     func cell(_ cell: NotificationCell, wantsToViewPost postId: String) {
-        print("DEBUG:viewpost")
+        PostService.fetchPost(withPostId: postId) { (post) in
+            let controller = MainController(collectionViewLayout: UICollectionViewFlowLayout())
+            controller.post = post
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     
